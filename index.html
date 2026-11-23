@@ -169,18 +169,11 @@ footer {
     letter-spacing: 2px;
 }
 
-.fade {
-    animation: fadeIn 2s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
 </style>
 </head>
 
 <body>
+
 <div class="stars"></div>
 
 <header>
@@ -197,6 +190,7 @@ footer {
     <h2>TIEMPO RESTANTE</h2>
 
     <div class="counter">
+
         <div class="time">
             <strong id="days">730</strong>
             <span>DÍAS</span>
@@ -216,69 +210,77 @@ footer {
             <strong id="seconds">00</strong>
             <span>SEGUNDOS</span>
         </div>
+
     </div>
 
     <p class="note">
-        Dos años restantes, o hasta que termine el último ciclo escolar.<br>
+        Dos años restantes, o hasta que termine
+        el último ciclo escolar.<br>
         Fecha provisional. El tiempo sigue avanzando.
     </p>
 </section>
 
 <section class="panel">
-    <div class="story-title">UNA CARTA QUE NUNCA TERMINÉ</div>
+
+    <div class="story-title">
+        UNA CARTA QUE NUNCA TERMINÉ
+    </div>
 
     <div class="story" id="story">
-        A veces me pregunto...
+A veces me pregunto...
 
-        ¿Realmente soy un buen amigo?
+¿Realmente soy un buen amigo?
 
-        He dado la cara por ellas, las he defendido
-        y he permanecido a su lado.
+He dado la cara por ellas, las he defendido
+y he permanecido a su lado.
 
-        Y ahora, cuando miro hacia el futuro,
-        solo puedo pensar en una cosa...
+Y ahora, cuando miro hacia el futuro,
+solo puedo pensar en una cosa...
 
-        Nos quedan dos años.
+Nos quedan dos años.
 
-        Dos años antes de que la vida nos lleve
-        por caminos diferentes.
+Dos años antes de que la vida nos lleve
+por caminos diferentes.
 
-        No quiero que el tiempo se detenga para siempre.
+No quiero que el tiempo se detenga para siempre.
 
-        Solo quisiera tener un poco más de tiempo
-        con las personas que más adoro.
+Solo quisiera tener un poco más de tiempo
+con las personas que más adoro.
     </div>
 
     <button onclick="narrar()">▶ Escuchar narración</button>
     <button onclick="detener()">■ Detener</button>
+
 </section>
 
 <section class="panel">
+
     <div class="story-title">LO QUE QUEDARÁ</div>
 
     <div class="story">
-        Y cuando llegue el día en que nuestros caminos
-        se separen, quizás lo último que me quede
-        de ellas sean las fotografías que nos tomamos
-        juntos en la primaria y la secundaria.
+Y cuando llegue el día en que nuestros caminos
+se separen, quizás lo último que me quede
+de ellas sean las fotografías que nos tomamos
+juntos en la primaria y la secundaria.
 
-        Fotos de momentos que parecían cualquier día,
-        pero que después se convertirán en recuerdos
-        que daría todo por volver a vivir.
+Fotos de momentos que parecían cualquier día,
+pero que después se convertirán en recuerdos
+que daría todo por volver a vivir.
 
-        Tal vez ya no podamos compartir el mismo salón,
-        ni caminar juntos por los pasillos,
-        ni vernos todos los días.
+Tal vez ya no podamos compartir el mismo salón,
+ni caminar juntos por los pasillos,
+ni vernos todos los días.
 
-        Pero cada fotografía guardará una parte
-        de lo que fuimos.
+Pero cada fotografía guardará una parte
+de lo que fuimos.
 
-        Y aunque el tiempo nos lleve por caminos
-        diferentes, siempre podré mirar esas imágenes
-        y recordar que, durante una parte de mi vida,
-        tuve a mi lado a las dos personas
-        que más adoraba en este mundo.
+Y aunque el tiempo nos lleve por caminos
+diferentes, siempre podré mirar esas imágenes
+y recordar que, durante una parte de mi vida,
+tuve a mi lado a las dos personas
+que más adoraba en este mundo.
     </div>
+
 </section>
 
 <div class="quote">
@@ -286,22 +288,26 @@ footer {
 </div>
 
 <section class="panel">
-    <div class="story-title">ANTES DE QUE EL RELOJ LLEGUE A CERO</div>
+
+    <div class="story-title">
+        ANTES DE QUE EL RELOJ LLEGUE A CERO
+    </div>
 
     <p class="story" style="text-align:center">
-        No sé qué pasará después,
-        ni si seguiremos viéndonos todos los días.
+No sé qué pasará después,
+ni si seguiremos viéndonos todos los días.
 
-        Pero mientras el reloj siga avanzando,
-        quiero aprovechar cada momento.
+Pero mientras el reloj siga avanzando,
+quiero aprovechar cada momento.
 
-        Porque algún día, cuando mire hacia atrás,
-        no quiero recordar solamente cuánto tiempo
-        nos quedaba...
+Porque algún día, cuando mire hacia atrás,
+no quiero recordar solamente cuánto tiempo
+nos quedaba...
 
-        Quiero recordar todo lo que vivimos
-        mientras todavía estábamos juntos.
+Quiero recordar todo lo que vivimos
+mientras todavía estábamos juntos.
     </p>
+
 </section>
 
 </main>
@@ -313,21 +319,37 @@ footer {
 </footer>
 
 <script>
-// Fecha provisional: dos años desde el día
-// en que se abre la página por primera vez.
-const inicio = new Date();
+
+// =====================================
+// CONTADOR PERMANENTE DE DOS AÑOS
+// =====================================
+
+const CLAVE = "lynx_dos_anios_inicio";
+
+let fechaGuardada = localStorage.getItem(CLAVE);
+
+if (!fechaGuardada) {
+    fechaGuardada = new Date().toISOString();
+    localStorage.setItem(CLAVE, fechaGuardada);
+}
+
+const inicio = new Date(fechaGuardada);
 const final = new Date(inicio);
+
 final.setFullYear(final.getFullYear() + 2);
 
 function actualizarContador() {
+
     const ahora = new Date();
     let restante = final - ahora;
 
     if (restante <= 0) {
+
         document.getElementById("days").textContent = "0";
         document.getElementById("hours").textContent = "00";
         document.getElementById("minutes").textContent = "00";
         document.getElementById("seconds").textContent = "00";
+
         return;
     }
 
@@ -341,19 +363,27 @@ function actualizarContador() {
     const segundos = Math.floor((restante % 60000) / 1000);
 
     document.getElementById("days").textContent = dias;
+
     document.getElementById("hours").textContent =
         String(horas).padStart(2, "0");
+
     document.getElementById("minutes").textContent =
         String(minutos).padStart(2, "0");
+
     document.getElementById("seconds").textContent =
         String(segundos).padStart(2, "0");
 }
 
-setInterval(actualizarContador, 1000);
 actualizarContador();
+setInterval(actualizarContador, 1000);
 
-// Narración usando la voz disponible en el celular.
+
+// =====================================
+// NARRACIÓN
+// =====================================
+
 function narrar() {
+
     if (!("speechSynthesis" in window)) {
         alert("Tu navegador no permite narración por voz.");
         return;
@@ -362,6 +392,7 @@ function narrar() {
     speechSynthesis.cancel();
 
     const texto = document.getElementById("story").innerText;
+
     const voz = new SpeechSynthesisUtterance(texto);
 
     voz.lang = "es-MX";
@@ -372,10 +403,12 @@ function narrar() {
 }
 
 function detener() {
+
     if ("speechSynthesis" in window) {
         speechSynthesis.cancel();
     }
 }
+
 </script>
 
 </body>
