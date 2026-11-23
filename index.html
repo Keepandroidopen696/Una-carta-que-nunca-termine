@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dos años más | LYNX</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #080b12;
+    color: #e8edf5;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at top, #18243b 0%, transparent 65%),
+        linear-gradient(180deg, #080b12, #101522);
+    z-index: -2;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, #ffffff80, transparent),
+        radial-gradient(1px 1px at 70% 60%, #ffffff60, transparent),
+        radial-gradient(2px 2px at 45% 80%, #ffffff50, transparent),
+        radial-gradient(1px 1px at 85% 20%, #ffffff70, transparent);
+    background-size: 200px 200px;
+    opacity: .5;
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 35px 15px 10px;
+}
+
+.logo {
+    color: #7f9fc9;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+h1 {
+    font-size: clamp(30px, 8vw, 52px);
+    margin: 20px 0 10px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #8995a9;
+    font-size: 14px;
+}
+
+main {
+    max-width: 650px;
+    margin: auto;
+    padding: 20px;
+}
+
+.panel {
+    background: #111827bb;
+    border: 1px solid #293449;
+    border-radius: 18px;
+    padding: 25px 18px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 15px 50px #0005;
+}
+
+.panel h2 {
+    font-size: 14px;
+    color: #9aabc5;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+.time {
+    min-width: 65px;
+}
+
+.time strong {
+    display: block;
+    font-size: clamp(25px, 7vw, 38px);
+    font-weight: 300;
+    color: #dce8ff;
+}
+
+.time span {
+    font-size: 10px;
+    color: #7f8ba0;
+    letter-spacing: 1px;
+}
+
+.note {
+    font-size: 12px;
+    color: #748198;
+    line-height: 1.7;
+}
+
+button {
+    background: #18253a;
+    color: #dce8ff;
+    border: 1px solid #405575;
+    border-radius: 30px;
+    padding: 13px 22px;
+    font-size: 14px;
+    margin: 8px 4px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+.story {
+    min-height: 260px;
+    text-align: left;
+    line-height: 2;
+    font-size: 16px;
+    color: #cbd5e5;
+    white-space: pre-line;
+}
+
+.story-title {
+    text-align: center;
+    color: #8198bb;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.quote {
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.7;
+    color: #dce8ff;
+    padding: 30px 10px;
+    font-weight: 300;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px 45px;
+    color: #536078;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.fade {
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+<div class="stars"></div>
+
+<header>
+    <div class="logo">LYNX PRESENTA</div>
+    <h1>Dos años más</h1>
+    <div class="subtitle">
+        Una carta al tiempo, y a las personas que más adoro.
+    </div>
+</header>
+
+<main>
+
+<section class="panel">
+    <h2>TIEMPO RESTANTE</h2>
+
+    <div class="counter">
+        <div class="time">
+            <strong id="days">730</strong>
+            <span>DÍAS</span>
+        </div>
+
+        <div class="time">
+            <strong id="hours">00</strong>
+            <span>HORAS</span>
+        </div>
+
+        <div class="time">
+            <strong id="minutes">00</strong>
+            <span>MINUTOS</span>
+        </div>
+
+        <div class="time">
+            <strong id="seconds">00</strong>
+            <span>SEGUNDOS</span>
+        </div>
+    </div>
+
+    <p class="note">
+        Dos años restantes, o hasta que termine el último ciclo escolar.<br>
+        Fecha provisional. El tiempo sigue avanzando.
+    </p>
+</section>
+
+<section class="panel">
+    <div class="story-title">UNA CARTA QUE NUNCA TERMINÉ</div>
+
+    <div class="story" id="story">
+        A veces me pregunto...
+
+        ¿Realmente soy un buen amigo?
+
+        He dado la cara por ellas, las he defendido
+        y he permanecido a su lado.
+
+        Y ahora, cuando miro hacia el futuro,
+        solo puedo pensar en una cosa...
+
+        Nos quedan dos años.
+
+        Dos años antes de que la vida nos lleve
+        por caminos diferentes.
+
+        No quiero que el tiempo se detenga para siempre.
+
+        Solo quisiera tener un poco más de tiempo
+        con las personas que más adoro.
+    </div>
+
+    <button onclick="narrar()">▶ Escuchar narración</button>
+    <button onclick="detener()">■ Detener</button>
+</section>
+
+<section class="panel">
+    <div class="story-title">LO QUE QUEDARÁ</div>
+
+    <div class="story">
+        Y cuando llegue el día en que nuestros caminos
+        se separen, quizás lo último que me quede
+        de ellas sean las fotografías que nos tomamos
+        juntos en la primaria y la secundaria.
+
+        Fotos de momentos que parecían cualquier día,
+        pero que después se convertirán en recuerdos
+        que daría todo por volver a vivir.
+
+        Tal vez ya no podamos compartir el mismo salón,
+        ni caminar juntos por los pasillos,
+        ni vernos todos los días.
+
+        Pero cada fotografía guardará una parte
+        de lo que fuimos.
+
+        Y aunque el tiempo nos lleve por caminos
+        diferentes, siempre podré mirar esas imágenes
+        y recordar que, durante una parte de mi vida,
+        tuve a mi lado a las dos personas
+        que más adoraba en este mundo.
+    </div>
+</section>
+
+<div class="quote">
+    Todavía nos quedan recuerdos por crear.
+</div>
+
+<section class="panel">
+    <div class="story-title">ANTES DE QUE EL RELOJ LLEGUE A CERO</div>
+
+    <p class="story" style="text-align:center">
+        No sé qué pasará después,
+        ni si seguiremos viéndonos todos los días.
+
+        Pero mientras el reloj siga avanzando,
+        quiero aprovechar cada momento.
+
+        Porque algún día, cuando mire hacia atrás,
+        no quiero recordar solamente cuánto tiempo
+        nos quedaba...
+
+        Quiero recordar todo lo que vivimos
+        mientras todavía estábamos juntos.
+    </p>
+</section>
+
+</main>
+
+<footer>
+    © 2026 LYNX / TODOS LOS DERECHOS RESERVADOS
+    <br><br>
+    UN GRAN PROYECTO
+</footer>
+
+<script>
+// Fecha provisional: dos años desde el día
+// en que se abre la página por primera vez.
+const inicio = new Date();
+const final = new Date(inicio);
+final.setFullYear(final.getFullYear() + 2);
+
+function actualizarContador() {
+    const ahora = new Date();
+    let restante = final - ahora;
+
+    if (restante <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        return;
+    }
+
+    const dias = Math.floor(restante / 86400000);
+    restante %= 86400000;
+
+    const horas = Math.floor(restante / 3600000);
+    restante %= 3600000;
+
+    const minutos = Math.floor(restante / 60000);
+    const segundos = Math.floor((restante % 60000) / 1000);
+
+    document.getElementById("days").textContent = dias;
+    document.getElementById("hours").textContent =
+        String(horas).padStart(2, "0");
+    document.getElementById("minutes").textContent =
+        String(minutos).padStart(2, "0");
+    document.getElementById("seconds").textContent =
+        String(segundos).padStart(2, "0");
+}
+
+setInterval(actualizarContador, 1000);
+actualizarContador();
+
+// Narración usando la voz disponible en el celular.
+function narrar() {
+    if (!("speechSynthesis" in window)) {
+        alert("Tu navegador no permite narración por voz.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const texto = document.getElementById("story").innerText;
+    const voz = new SpeechSynthesisUtterance(texto);
+
+    voz.lang = "es-MX";
+    voz.rate = 0.85;
+    voz.pitch = 0.9;
+
+    speechSynthesis.speak(voz);
+}
+
+function detener() {
+    if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+    }
+}
+</script>
+
+</body>
+</html>
